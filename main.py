@@ -195,11 +195,11 @@ def text_handler(message):
             traceback.print_exc()
 
     if message.text == "Изменить время уведомления":
-        path = os.getcwd() + '\ID'
+        path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
             if i != '.git' and i != '.idea':
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+                with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                     line = f.readlines()
                     if str(message.from_user.id) in str(line[2]):
                         bot.send_message(chat_id=message.chat.id,
@@ -207,11 +207,11 @@ def text_handler(message):
                                               reply_markup=markup_t)
     if message.text == "Включить/выключить уведомления":
 
-        path = os.getcwd() + '\ID'
+        path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
             if i != '.git' and i != '.idea':
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+                with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                     line = f.readlines()
                     if str(message.from_user.id) in str(line[2]):
                         print(1)
@@ -224,11 +224,11 @@ def text_handler(message):
                                                   text='Сейчас ведомления выключены.',
                                                   reply_markup=markup_s)
     if message.text == "Вкл":
-        path = os.getcwd() + '\ID'
+        path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
             if i != '.git' and i != '.idea':
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+                with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                     line = f.readlines()
                     if str(message.from_user.id) in str(line[2]):
                         l0 = str(line[0])
@@ -242,11 +242,11 @@ def text_handler(message):
                         f.close()
                         bot.send_message(message.chat.id, 'Уведомления включены', reply_markup=keyboard2)
     if message.text == "Выкл":
-        path = os.getcwd() + '\ID'
+        path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
             if i!='.git' and i!='.idea':
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+                with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                     line = f.readlines()
                     if str(message.from_user.id) in str(line[2]):
                         l0 = str(line[0])
@@ -260,10 +260,10 @@ def text_handler(message):
                         f.close()
                         bot.send_message(message.chat.id, 'Уведомления выключены', reply_markup=keyboard2)
     if message.text == "1 мин":
-        path = os.getcwd() + '\ID'
+        path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
-            with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+            with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                 line = f.readlines()
                 if str(message.from_user.id) in str(line[2]):
                     l0 = str(line[0])
@@ -278,10 +278,10 @@ def text_handler(message):
                     bot.send_message(chat_id=message.chat.id,
                                           text='Время изменено на 1 мин.',reply_markup=keyboard2)
     if message.text == "5 мин":
-        path = os.getcwd() + '\ID'
+        path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
-            with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+            with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                 line = f.readlines()
                 if str(message.from_user.id) in str(line[2]):
                     l0 = str(line[0])
@@ -296,10 +296,10 @@ def text_handler(message):
                     bot.send_message(chat_id=message.chat.id,
                                           text='Время изменено на 5 мин.',reply_markup=keyboard2)
     if message.text == "10 мин":
-        path = os.getcwd() + '\ID'
+        path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
-            with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+            with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                 line = f.readlines()
                 if str(message.from_user.id) in str(line[2]):
                     l0 = str(line[0])
@@ -314,10 +314,10 @@ def text_handler(message):
                     bot.send_message(chat_id=message.chat.id,
                                           text='Время изменено на 10 мин.',reply_markup=keyboard2)
     if message.text == "15 мин":
-        path = os.getcwd() + '\ID'
+        path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
-            with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+            with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                 line = f.readlines()
                 if str(message.from_user.id) in str(line[2]):
                     l0 = str(line[0])
