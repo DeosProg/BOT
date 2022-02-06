@@ -86,6 +86,6 @@ def get_week_num():
     d2 = now - timedelta(days=now.weekday())
 
     parity = ((d2 - d1).days // 7) % 2
-    return itn(2) if parity else (1)
+    return int(2) if parity else (1)
 
 
