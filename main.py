@@ -671,154 +671,17 @@ def callback(call):
             except Exception as exc:
                 print(exc)
                 traceback.print_exc()
-        # УВЕДОМЛЕНИЯ-------------------------------------------------------------
-
-        elif call.data == 'n1':
-            path = os.getcwd() + '\ID'
-            filelist = os.listdir(path)
-            for i in filelist:
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
-                    line = f.readlines()
-                    if str(call.message.from_user.id) in str(line[2]):
-                        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                              text='Текущее время:' + str(int(line[3]) // 60) + 'мин.',reply_markup=markup_t)
-        elif call.data == 'n2':
-            print(call.message.from_user.id)
-            path = os.getcwd() + '\ID'
-            filelist = os.listdir(path)
-            for i in filelist:
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
-                    line = f.readlines()
-                    if str(call.message.from_user.id) in str(line[2]):
-                        if '1' in str(line[2]):
-                            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                                  text='Уведомления включены.',
-                                                  reply_markup=markup_s)
-                        elif '2' in str(line[2]) == '0':
-                            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                                  text='Уведомления выключены.',
-                                                  reply_markup=markup_s)
-        elif call.data == 'on':
-                path = os.getcwd() + '\ID'
-                filelist = os.listdir(path)
-                for i in filelist:
-                    with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
-                        line = f.readlines()
-                        if str(call.message.from_user.id) in str(line[2]):
-                            l0 = str(line[0])
-                            l1 = str(line[1])
-                            l2 = str(line[2])
-                            l3 = str(line[3])
-                            l4 = str(1)
-                            f.seek(0)
-                            f.truncate()
-                            f.write(l0 + l1 + l2 + l3 + l4)
-                            f.close()
-                            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                                  text='Уведомления включены.')
-        elif call.data == 'off':
-                path = os.getcwd() + '\ID'
-                filelist = os.listdir(path)
-                for i in filelist:
-                    with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
-                        line = f.readlines()
-                        if str(call.message.from_user.id) in str(line[2]):
-                            l0 = str(line[0])
-                            l1 = str(line[1])
-                            l2 = str(line[2])
-                            l3 = str(line[3])
-                            l4 = str(0)
-                            f.seek(0)
-                            f.truncate()
-                            f.write(l0 + l1 + l2 + l3 + l4)
-                            f.close()
-                            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                                  text='Уведомления выключены.')
-
-        elif call.data == 't1':
-            path = os.getcwd() + '\ID'
-            filelist = os.listdir(path)
-            for i in filelist:
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
-                    line = f.readlines()
-                    if str(call.message.from_user.id) in str(line[2]):
-                        l0 = str(line[0])
-                        l1 = str(line[1])
-                        l2 = str(line[2])
-                        l3 = str(60) + '\n'
-                        l4 = str(line[4])
-                        f.seek(0)
-                        f.truncate()
-                        f.write(l0 + l1 + l2 + l3 + l4)
-                        f.close()
-                        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                              text='Время изменено на 1 мин.')
-        elif call.data == 't5':
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                  text='Текущее время: 5 мин.')
-            path = os.getcwd() + '\ID'
-            filelist = os.listdir(path)
-            for i in filelist:
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
-                    line = f.readlines()
-                    if str(call.message.from_user.id) in str(line[2]):
-                        l0 = str(line[0])
-                        l1 = str(line[1])
-                        l2 = str(line[2])
-                        l3 = str(300) + '\n'
-                        l4 = str(line[4])
-                        f.seek(0)
-                        f.truncate()
-                        f.write(l0 + l1 + l2 + l3 + l4)
-                        f.close()
-                        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                              text='Время изменено на 5 мин.')
-        elif call.data == 't10':
-            path = os.getcwd() + '\ID'
-            filelist = os.listdir(path)
-            for i in filelist:
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
-                    line = f.readlines()
-                    if str(call.message.from_user.id) in str(line[2]):
-                        l0 = str(line[0])
-                        l1 = str(line[1])
-                        l2 = str(line[2])
-                        l3 = str(600) + '\n'
-                        l4 = str(line[4])
-                        f.seek(0)
-                        f.truncate()
-                        f.write(l0 + l1 + l2 + l3 + l4)
-                        f.close()
-                        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                              text='Время изменено на 10 мин.')
-        elif call.data == 't15':
-            path = os.getcwd() + '\ID'
-            filelist = os.listdir(path)
-            for i in filelist:
-                with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
-                    line = f.readlines()
-                    if str(message.from_user.id) in str(line[2]):
-                        l0 = str(line[0])
-                        l1 = str(line[1])
-                        l2 = str(line[2])
-                        l3 = str(900) + '\n'
-                        l4 = str(line[4])
-                        f.seek(0)
-                        f.truncate()
-                        f.write(l0 + l1 + l2 + l3 + l4)
-                        f.close()
-                        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                              text='Время изменено на 15 мин.')
+        
 # УВЕДОМЛЕНИЯ--------------------------------------------------------------------
 def notif():
     H = datetime.today().strftime("%H")
     M = datetime.today().strftime("%M")
     S = datetime.today().strftime("%S")
     now_time = int(H) * 60 * 60 + int(M) * 60 + int(S)
-    path = os.getcwd() + '\ID'
+    path = os.getcwd() + '/ID'
     filelist = os.listdir(path)
     for i in filelist:
-        with open(path + '\\' + str(i), 'r+', encoding='utf-8') as f:
+        with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
             try:
                 line = f.readlines()
                 id = line[2]
