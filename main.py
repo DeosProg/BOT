@@ -698,11 +698,12 @@ def notif():
 
 
 def main():
-    try:
-        print(texxt)
-        bot.polling(none_stop=True)
-    except Exception as exc:
-        traceback.print_exc()
+ ​    while(True): 
+ ​        try: 
+ ​            bot.infinity_polling() 
+ ​        except Exception as e: 
+ ​            time.sleep(1) 
+ ​            print(e)
 
 
 def second():
