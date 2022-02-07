@@ -699,9 +699,9 @@ def notif():
 
 def main():
     try:
+        print(texxt)
         bot.polling(none_stop=True)
     except Exception as exc:
-        print(exc)
         traceback.print_exc()
 
 
