@@ -698,7 +698,7 @@ def notif():
 
 
 def main():
- ​    while(True): 
+ ​   while True: 
  ​        try: 
  ​            bot.infinity_polling() 
  ​        except Exception as e: 
