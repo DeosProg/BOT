@@ -628,7 +628,7 @@ def callback(call):
                 print(exc)
                 traceback.print_exc()
 
-        elif call.data == 'default':
+        elif call.data == 'next':
             try:
                 week_number = timetable_processing.get_week_num
                 if week_number == 2:
@@ -650,7 +650,7 @@ def callback(call):
                 print(exc)
                 traceback.print_exc()
 
-        elif call.data == 'next':
+        elif call.data == 'default':
             try:
                 week_number = timetable_processing.get_week_num
                 if week_number == 2:
