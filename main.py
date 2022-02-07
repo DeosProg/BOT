@@ -36,7 +36,7 @@ bot = telebot.TeleBot(config.token)
 
 months = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября',
           'декабря']
-lessons = [34200,40800,47400,55500,62100]
+lessons = [34200,40800,47400,55500,62700]
 path = os.getcwd()
 
 
@@ -214,7 +214,6 @@ def text_handler(message):
                 with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                     line = f.readlines()
                     if str(message.from_user.id) in str(line[2]):
-                        print(1)
                         if '1' in str(line[4]):
                             bot.send_message(chat_id=message.chat.id,
                                                   text='Сейчас уведомления включены.',
@@ -688,9 +687,13 @@ def notif():
                 s_time = line[3]
                 switch = line[4]
                 if '1' in switch:
+                    tt = timetable_processing.get_timetable_today()
                     for t in lessons:
-                        if int(t) - int(now_time) == int(s_time):
-                            bot.send_message(id, text='До начала пары осталось: ' + str(int(s_time) // 60) + ' мин.')
+                        index = lessons.index(t)
+                        if tt[index] != '🚫':
+                            if int(t) - int(now_time) == int(s_time):
+                                print('notification')
+                                bot.send_message(id, text='До начала пары осталось: ' + str(int(s_time) // 60) + ' мин.')
             except Exception as exc:
                 print(exc)
                 traceback.print_exc()
