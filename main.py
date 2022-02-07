@@ -699,11 +699,11 @@ def notif():
 
 def main():
     while True: 
- ​        try: 
- ​            bot.infinity_polling() 
- ​        except Exception as e: 
- ​            time.sleep(1) 
- ​            print(e)
+ ​       try: 
+ ​           bot.infinity_polling() 
+ ​       except Exception as e: 
+ ​           time.sleep(1) 
+ ​           print(e)
 
 
 def second():
