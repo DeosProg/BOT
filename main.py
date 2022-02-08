@@ -701,8 +701,8 @@ def notif():
 
 
 def main():
+    print(texxt)
     try:
-        print(texxt)
         bot.polling(none_stop=True)
     except Exception as exc:
         traceback.print_exc()
@@ -714,6 +714,6 @@ def second():
         time.sleep(1)
 
 
-with ThreadPoolExecutor(max_workers=3) as pool:
+with ThreadPoolExecutor(max_workers=2 as pool:
     pool.submit(main)
     pool.submit(second)
