@@ -714,6 +714,6 @@ def second():
         time.sleep(1)
 
 
-with ThreadPoolExecutor(max_workers=2 as pool:
+with ThreadPoolExecutor(max_workers=2) as pool:
     pool.submit(main)
     pool.submit(second)
