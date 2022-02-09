@@ -568,108 +568,6 @@ def callback(call):
                 print(lst)
             except Exception as exc:
                 traceback.print_exc()
-
-        # РАСПИСАНИЕ-------------------------------------------------------------
-        elif call.data == 'today':
-            try:
-                today = datetime.today()
-                nn = int(today.strftime("%U")) - 35
-                c_date = date.today()
-                day = str(c_date.day) + ' '
-                month = months[int(c_date.month)]
-                pairs = timetable_processing.get_timetable_today()
-                try:
-                    if pairs[5] == 'Авиамоторная':
-                        place = 'на Авиамоторной'
-                    elif pairs[5] == 'D':
-                        place = 'онлайн 💻'
-                    else:
-                        place = 'на Октябрьском поле'
-                except:
-                    place = 'нигде'
-                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                      text=texts.timetables_text.format(day=day + month, place=place, pair1=pairs[0],
-                                                                        pair2=pairs[1], pair3=pairs[2], pair4=pairs[3],
-                                                                        pair5=pairs[4],
-                                                                        nn="\nТекущая неделя - " + str(nn + 1),
-                                                                        parse_mode="Markdown"))
-            except Exception as exc:
-                print(exc)
-                traceback.print_exc()
-
-        elif call.data == 'tomorrow':
-            try:
-                c_date = date.today()
-                day = str(int(c_date.day) + 1) + ' '
-                month = months[int(c_date.month)]
-                pairs = timetable_processing.get_timetable_tomorrow()
-                try:
-                    if pairs[5] == 'Авиамоторная':
-                        place = 'на Авиамоторной'
-                    elif pairs[5] == 'D':
-                        place = 'онлайн 💻'
-                    else:
-                        place = 'на Октябрьском поле'
-                except:
-                    place = 'нигде'
-                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
-                                      text=texts.timetables_text.format(
-                                          day=day + month,
-                                          place=place,
-                                          pair1=pairs[0],
-                                          pair2=pairs[1],
-                                          pair3=pairs[2],
-                                          pair4=pairs[3],
-                                          pair5=pairs[4],
-                                          nn=" ",
-                                          parse_mode="Markdown"))
-            except Exception as exc:
-                print(exc)
-                traceback.print_exc()
-
-        elif call.data == 'next':
-            try:
-                week_number = timetable_processing.get_week_num
-                if week_number == 2:
-                    bot.send_photo(chat_id=call.message.chat.id, photo=open('0.png', 'rb'))
-                    bot.send_message(call.message.chat.id, "Цветовые обозначения:")
-                    bot.send_message(call.message.chat.id, "Лекции - 🟢")
-                    bot.send_message(call.message.chat.id, "Практика - 🟠")
-                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
-
-
-                else:
-                    bot.send_photo(chat_id=call.message.chat.id, photo=open('1.png', 'rb'))
-                    bot.send_message(call.message.chat.id, "Цветовые обозначения:")
-                    bot.send_message(call.message.chat.id, "Лекции - 🟢")
-                    bot.send_message(call.message.chat.id, "Практика - 🟠")
-                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
-
-            except Exception as exc:
-                print(exc)
-                traceback.print_exc()
-
-        elif call.data == 'default':
-            try:
-                week_number = timetable_processing.get_week_num
-                if week_number == 2:
-                    bot.send_photo(chat_id=call.message.chat.id, photo=open('1.png', 'rb'))
-                    bot.send_message(call.message.chat.id, "Цветовые обозначения:")
-                    bot.send_message(call.message.chat.id, "Лекции - 🟢")
-                    bot.send_message(call.message.chat.id, "Практика - 🟠")
-                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
-
-
-                else:
-                    bot.send_photo(chat_id=call.message.chat.id, photo=open('0.png', 'rb'))
-                    bot.send_message(call.message.chat.id, "Цветовые обозначения:")
-                    bot.send_message(call.message.chat.id, "Лекции - 🟢")
-                    bot.send_message(call.message.chat.id, "Практика - 🟠")
-                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
-
-            except Exception as exc:
-                print(exc)
-                traceback.print_exc()
         
 # УВЕДОМЛЕНИЯ--------------------------------------------------------------------
 def notif():
@@ -694,6 +592,7 @@ def notif():
                             if int(t) - int(now_time) == int(s_time):
                                 print('notification')
                                 bot.send_message(id, text='До начала пары осталось: ' + str(int(s_time) // 60) + ' мин.')
+             
             except Exception as exc:
                 print(exc)
                 traceback.print_exc()
