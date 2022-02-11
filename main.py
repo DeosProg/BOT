@@ -58,7 +58,7 @@ def update(message):
 def text_handler(message):
     # ИНИЦИАЛИЗАЦИЯ КНОПОК, КЛАВИАТУР--------------------------------------------
     c_date = date.today()
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, items_in_row=2)  # основная
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)  # основная
     keyboard2 = types.ReplyKeyboardMarkup(resize_keyboard=True)  # экран приветствия
     keyboard3 = types.ReplyKeyboardMarkup(resize_keyboard=True)  # главный экран
     markup_n = types.ReplyKeyboardMarkup(resize_keyboard=True)
