@@ -602,10 +602,12 @@ def notif():
 def main():
     print(texxt)
     while True:
-              try:
-                  bot.polling(none_stop=True)
+        try:
+            bot.polling(none_stop=True)
+        except Exception as e:
+            print(e)
+            time.sleep(15)
 
-              except Exception as e:
 
 
 def second():
