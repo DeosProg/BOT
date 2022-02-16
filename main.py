@@ -612,8 +612,12 @@ def main():
 
 def second():
     while True:
-        notif()
-        time.sleep(1)
+        try:
+            notif()
+            time.sleep(1)
+            except Exception as e:
+                print(e)
+                time.sleep(5)
 
 
 with ThreadPoolExecutor(max_workers=2) as pool:
