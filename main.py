@@ -36,7 +36,7 @@ bot = telebot.TeleBot(config.token)
 
 months = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября',
           'декабря']
-lessons = [34200,40800,47400,55500,62100]
+lessons = [42180]
 path = os.getcwd()
 
 
@@ -103,12 +103,11 @@ def text_handler(message):
     item_t15 = types.KeyboardButton('15 мин')
     item_t1 = types.KeyboardButton('1 мин')
 
-
     item_n1 = types.KeyboardButton('Изменить время уведомления')
     item_n2 = types.KeyboardButton('Включить/выключить уведомления')
 
-    item_s1 = types.KeyboardButton('Вкл',)
-    item_s0 = types.KeyboardButton('Выкл',)
+    item_s1 = types.KeyboardButton('Вкл', )
+    item_s0 = types.KeyboardButton('Выкл', )
 
     keyboard.add(button_8)
     keyboard.add(button_7)
@@ -203,8 +202,8 @@ def text_handler(message):
                     line = f.readlines()
                     if str(message.from_user.id) in str(line[2]):
                         bot.send_message(chat_id=message.chat.id,
-                                              text='Текущее время: ' + str(int(line[3]) // 60) + ' мин. На какое изменить?',
-                                              reply_markup=markup_t)
+                                         text='Текущее время: ' + str(int(line[3]) // 60) + ' мин. На какое изменить?',
+                                         reply_markup=markup_t)
     if message.text == "Включить/выключить уведомления":
 
         path = os.getcwd() + '/ID'
@@ -216,12 +215,12 @@ def text_handler(message):
                     if str(message.from_user.id) in str(line[2]):
                         if '1' in str(line[4]):
                             bot.send_message(chat_id=message.chat.id,
-                                                  text='Сейчас уведомления включены.',
-                                                  reply_markup=markup_s)
+                                             text='Сейчас уведомления включены.',
+                                             reply_markup=markup_s)
                         elif '0' in str(line[4]):
                             bot.send_message(chat_id=message.chat.id,
-                                                  text='Сейчас ведомления выключены.',
-                                                  reply_markup=markup_s)
+                                             text='Сейчас ведомления выключены.',
+                                             reply_markup=markup_s)
     if message.text == "Вкл":
         path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
@@ -244,7 +243,7 @@ def text_handler(message):
         path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
         for i in filelist:
-            if i!='.git' and i!='.idea':
+            if i != '.git' and i != '.idea':
                 with open(path + '/' + str(i), 'r+', encoding='utf-8') as f:
                     line = f.readlines()
                     if str(message.from_user.id) in str(line[2]):
@@ -275,7 +274,7 @@ def text_handler(message):
                     f.write(l0 + l1 + l2 + l3 + l4)
                     f.close()
                     bot.send_message(chat_id=message.chat.id,
-                                          text='Время изменено на 1 мин.',reply_markup=keyboard2)
+                                     text='Время изменено на 1 мин.', reply_markup=keyboard2)
     if message.text == "5 мин":
         path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
@@ -293,7 +292,7 @@ def text_handler(message):
                     f.write(l0 + l1 + l2 + l3 + l4)
                     f.close()
                     bot.send_message(chat_id=message.chat.id,
-                                          text='Время изменено на 5 мин.',reply_markup=keyboard2)
+                                     text='Время изменено на 5 мин.', reply_markup=keyboard2)
     if message.text == "10 мин":
         path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
@@ -311,7 +310,7 @@ def text_handler(message):
                     f.write(l0 + l1 + l2 + l3 + l4)
                     f.close()
                     bot.send_message(chat_id=message.chat.id,
-                                          text='Время изменено на 10 мин.',reply_markup=keyboard2)
+                                     text='Время изменено на 10 мин.', reply_markup=keyboard2)
     if message.text == "15 мин":
         path = os.getcwd() + '/ID'
         filelist = os.listdir(path)
@@ -329,7 +328,7 @@ def text_handler(message):
                     f.write(l0 + l1 + l2 + l3 + l4)
                     f.close()
                     bot.send_message(chat_id=message.chat.id,
-                                          text='Время изменено на 15 мин.',reply_markup=keyboard2)
+                                     text='Время изменено на 15 мин.', reply_markup=keyboard2)
 
     # ОТПРАВКА СООБЩЕНИЙ-------------------------------------------------------------
     if codeA in message.text:
@@ -355,7 +354,6 @@ def text_handler(message):
             print(i)
             print(exc)
             traceback.print_exc()
-
     if codeB in message.text:
         try:
             a = datetime.today().strftime("%d.%m %H:%M")
@@ -385,7 +383,6 @@ def text_handler(message):
             traceback.print_exc()
 
 
-
 # ОБРАБОТКА INLINE КНОПОК--------------------------------------------------------
 @bot.callback_query_handler(func=lambda call: True)
 def callback(call):
@@ -398,8 +395,6 @@ def callback(call):
 
     item = types.InlineKeyboardButton('Текущая', callback_data='0')
     item2 = types.InlineKeyboardButton('Следующая', callback_data='1')
-
-
 
     item3 = types.InlineKeyboardButton('Сегодня', callback_data='today')
     item4 = types.InlineKeyboardButton('Завтра', callback_data='tomorrow')
@@ -419,16 +414,12 @@ def callback(call):
     item15 = types.InlineKeyboardButton('Пятница', callback_data='15')
     item16 = types.InlineKeyboardButton('Суббота', callback_data='16')
 
-
-
-
     markup.add(item, item2)
     markup2.add(item3, item4, item34, item43)
     markup3.add(item5, item6, item7)
     markup3.add(item8, item9, item10)
     markup31.add(item11, item12, item13)
     markup31.add(item14, item15, item16)
-
 
     if call.message:
 
@@ -448,6 +439,8 @@ def callback(call):
                                       reply_markup=markupdynamic)
                 bot.send_document(call.message.chat.id, open(os.getcwd() + urls[0], 'rb'))
                 print(lst)
+            except IndexError:
+                pass
             except Exception as exc:
                 traceback.print_exc()
         elif call.data == '02':
@@ -568,7 +561,249 @@ def callback(call):
                 print(lst)
             except Exception as exc:
                 traceback.print_exc()
-        
+
+        # ДОМАШНЕЕ ЗАДАНИЕ-------------------------------------------------------
+        if call.data == '0':
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                  text='На какой день вы хотите узнать домашнее задание?', reply_markup=markup3)
+        elif call.data == '1':
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                  text='На какой день вы хотите узнать домашнее задание?', reply_markup=markup31)
+        elif call.data == '01':
+            try:
+                lst = homework0.Mo
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+                print(lst)
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '02':
+            try:
+                lst = homework0.Tu
+                print(lst)
+                print(homework0.Tu)
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '03':
+            try:
+                lst = homework0.We
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '04':
+            try:
+                lst = homework0.Th
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '05':
+            try:
+                lst = homework0.Fr
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '06':
+            try:
+                lst = homework0.Sa
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '11':
+            try:
+                lst = homework1.Mo
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+                print(lst)
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '12':
+            try:
+                lst = homework1.Tu
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+                print(lst)
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '13':
+            try:
+                lst = homework1.We
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+                print(lst)
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '14':
+            try:
+                lst = homework1.Th
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+                print(lst)
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '15':
+            try:
+                lst = homework1.Fr
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+                print(lst)
+            except Exception as exc:
+                traceback.print_exc()
+        elif call.data == '16':
+            try:
+                lst = homework1.Sa
+                hw, urls = processing(lst)
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.homework.format(a=hw[0], b=hw[1], c=hw[2], d=hw[3], e=hw[4]),
+                                      reply_markup=markupdynamic)
+                bot.send_document(call.message.chat.id, open(r'/root/BOT2/' + urls[0], 'rb'))
+                print(lst)
+            except Exception as exc:
+                traceback.print_exc()
+
+        # РАСПИСАНИЕ-------------------------------------------------------------
+        elif call.data == 'today':
+            try:
+                today = datetime.today()
+                nn = int(today.strftime("%U")) - 35
+                c_date = date.today()
+                day = str(c_date.day) + ' '
+                month = months[int(c_date.month)]
+                pairs = timetable_processing.get_timetable_today()
+                try:
+                    if pairs[5] == 'Авиамоторная':
+                        place = 'на Авиамоторной'
+                    elif pairs[5] == 'D':
+                        place = 'онлайн 💻'
+                    else:
+                        place = 'на Октябрьском поле'
+                except:
+                    place = 'нигде'
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.timetables_text.format(day=day + month, place=place, pair1=pairs[0],
+                                                                        pair2=pairs[1], pair3=pairs[2], pair4=pairs[3],
+                                                                        pair5=pairs[4],
+                                                                        nn="\nТекущая неделя - " + str(nn + 1),
+                                                                        parse_mode="Markdown"))
+            except Exception as exc:
+                print(exc)
+                traceback.print_exc()
+
+        elif call.data == 'tomorrow':
+            try:
+                c_date = date.today()
+                day = str(int(c_date.day) + 1) + ' '
+                month = months[int(c_date.month)]
+                pairs = timetable_processing.get_timetable_tomorrow()
+                try:
+                    if pairs[5] == 'Авиамоторная':
+                        place = 'на Авиамоторной'
+                    elif pairs[5] == 'D':
+                        place = 'онлайн 💻'
+                    else:
+                        place = 'на Октябрьском поле'
+                except:
+                    place = 'нигде'
+                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                      text=texts.timetables_text.format(
+                                          day=day + month,
+                                          place=place,
+                                          pair1=pairs[0],
+                                          pair2=pairs[1],
+                                          pair3=pairs[2],
+                                          pair4=pairs[3],
+                                          pair5=pairs[4],
+                                          nn=" ",
+                                          parse_mode="Markdown"))
+            except Exception as exc:
+                print(exc)
+                traceback.print_exc()
+
+        elif call.data == 'default':
+            try:
+                week_number = timetable_processing.get_week_num
+                if week_number == 2:
+                    bot.send_photo(chat_id=call.message.chat.id, photo=open('0.png', 'rb'))
+                    bot.send_message(call.message.chat.id, "Цветовые обозначения:")
+                    bot.send_message(call.message.chat.id, "Лекции - 🟢")
+                    bot.send_message(call.message.chat.id, "Практика - 🟠")
+                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
+
+
+                else:
+                    bot.send_photo(chat_id=call.message.chat.id, photo=open('1.png', 'rb'))
+                    bot.send_message(call.message.chat.id, "Цветовые обозначения:")
+                    bot.send_message(call.message.chat.id, "Лекции - 🟢")
+                    bot.send_message(call.message.chat.id, "Практика - 🟠")
+                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
+
+            except Exception as exc:
+                print(exc)
+                traceback.print_exc()
+
+        elif call.data == 'next':
+            try:
+                week_number = timetable_processing.get_week_num
+                if week_number == 2:
+                    bot.send_photo(chat_id=call.message.chat.id, photo=open('1.png', 'rb'))
+                    bot.send_message(call.message.chat.id, "Цветовые обозначения:")
+                    bot.send_message(call.message.chat.id, "Лекции - 🟢")
+                    bot.send_message(call.message.chat.id, "Практика - 🟠")
+                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
+
+
+                else:
+                    bot.send_photo(chat_id=call.message.chat.id, photo=open('0.png', 'rb'))
+                    bot.send_message(call.message.chat.id, "Цветовые обозначения:")
+                    bot.send_message(call.message.chat.id, "Лекции - 🟢"
+                                                           "Практика - 🟠"
+                                                           "Лабораторные - 🟣")
+                    bot.send_message(call.message.chat.id, "Практика - 🟠")
+                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
+
+            except Exception as exc:
+                print(exc)
+                traceback.print_exc()
+
+
 # УВЕДОМЛЕНИЯ--------------------------------------------------------------------
 def notif():
     H = datetime.today().strftime("%H")
@@ -589,10 +824,12 @@ def notif():
                     for t in lessons:
                         index = lessons.index(t)
                         if tt[index] != '🚫':
+                            print("now: ",int(now_time))
+                            print(int(t) - int(now_time))
                             if int(t) - int(now_time) == int(s_time):
                                 print('notification')
-                                bot.send_message(id, text='До начала пары осталось: ' + str(int(s_time) // 60) + ' мин.')
-             
+                                bot.send_message(id,
+                                                 text='До начала пары осталось: ' + str(int(s_time) // 60) + ' мин.')
             except Exception as exc:
                 print(exc)
                 traceback.print_exc()
@@ -600,26 +837,19 @@ def notif():
 
 
 def main():
-    print(texxt)
-    while True:
-        try:
-            bot.polling(none_stop=True)
-        except Exception as e:
-            print(e)
-            time.sleep(15)
-
+    try:
+        print(texxt)
+        bot.polling(none_stop=True)
+    except Exception as exc:
+        traceback.print_exc()
 
 
 def second():
     while True:
-        try:
-            notif()
-            time.sleep(1)
-        except Exception as e:
-            print(e)
-            time.sleep(5)
+        notif()
+        time.sleep(1)
 
-
-with ThreadPoolExecutor(max_workers=2) as pool:
-    pool.submit(main)
-    pool.submit(second)
+if __name__ == '__main__':
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        pool.submit(main)
+        pool.submit(second)
