@@ -785,9 +785,9 @@ def callback(call):
                 if week_number == 2:
                     bot.send_photo(chat_id=call.message.chat.id, photo=open('1.png', 'rb'))
                     bot.send_message(call.message.chat.id, "Цветовые обозначения:")
-                    bot.send_message(call.message.chat.id, "Лекции - 🟢")
-                    bot.send_message(call.message.chat.id, "Практика - 🟠")
-                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
+                    bot.send_message(call.message.chat.id, "Лекции - 🟢"
+                                                           "Практика - 🟠"
+                                                           "Лабораторные - 🟣")
 
 
                 else:
@@ -796,8 +796,6 @@ def callback(call):
                     bot.send_message(call.message.chat.id, "Лекции - 🟢"
                                                            "Практика - 🟠"
                                                            "Лабораторные - 🟣")
-                    bot.send_message(call.message.chat.id, "Практика - 🟠")
-                    bot.send_message(call.message.chat.id, "Лабораторные - 🟣")
 
             except Exception as exc:
                 print(exc)
@@ -824,8 +822,6 @@ def notif():
                     for t in lessons:
                         index = lessons.index(t)
                         if tt[index] != '🚫':
-                            print("now: ",int(now_time))
-                            print(int(t) - int(now_time))
                             if int(t) - int(now_time) == int(s_time):
                                 print('notification')
                                 bot.send_message(id,
