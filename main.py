@@ -1,9 +1,10 @@
-
+# сторонние зависимости
+import telebot
+import os
+import traceback
 from telebot import types
 import datetime
-from datetime import datetime, date
-from concurrent.futures import ThreadPoolExecutor
-import threading
+from datetime import date
 
 # мои зависимости
 from notifications import check_settings
