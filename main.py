@@ -1,7 +1,4 @@
-import time
-import telebot
-import os
-import traceback
+
 from telebot import types
 import datetime
 from datetime import datetime, date
