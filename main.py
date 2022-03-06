@@ -36,7 +36,7 @@ bot = telebot.TeleBot(config.token)
 
 months = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября',
           'декабря']
-lessons = [42180]
+lessons = [34200,40800,47400,55500,62100]
 path = os.getcwd()
 
 
@@ -821,7 +821,7 @@ def notif():
                     tt = timetable_processing.get_timetable_today()
                     for t in lessons:
                         index = lessons.index(t)
-                        if tt[index] != '🚫':
+                        if tt[index] != '🚫' and tt[index] != 'выходной':
                             if int(t) - int(now_time) == int(s_time):
                                 print('notification')
                                 bot.send_message(id,
@@ -835,7 +835,7 @@ def notif():
 def main():
     try:
         print(texxt)
-        bot.polling(none_stop=True)
+        bot.infinity_polling(timeout=10,long_polling_timeout=5)
     except Exception as exc:
         traceback.print_exc()
 
